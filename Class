@@ -1,0 +1,19 @@
+package com.scsa.user;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class UserTest {
+
+	public static void main(String[] args) {
+		BeanFactory factory = new ClassPathXmlApplicationContext("/config/app.xml");
+		IUserService ser = factory.getBean(IUserService.class);
+		ser.create(new User("test11","pass11","윤정상","yoon@gmail.com"));
+		ser.findUser("test11");
+		for(User u : ser.findUserList()) {
+			System.out.println(u);
+		}
+		
+	}
+
+}
